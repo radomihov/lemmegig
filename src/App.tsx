@@ -2,7 +2,7 @@ import ComingSoon from "./components/ComingSoon";
 
 function App() {
   return (
-    <ComingSoon />
+    <ComingSoon name={"Rado Mihov"} age={38}/>
   )
 }
 
