@@ -55,11 +55,9 @@ function Footer() {
                   Други ресурси
                 </span>
                                     <ul className="list-unstyled">
-                                        <FooterNavItem name={"Ultimate Guitar"}
-                                                       link={"https://www.ultimate-guitar.com/"}/>
+                                        <FooterNavItem name={"Ultimate Guitar"}  link={"https://www.ultimate-guitar.com/"}/>
                                         <FooterNavItem name={"Акордите"} link={"https://akordite.com/"}/>
-                                        <FooterNavItem name={"Споделено хваление"}
-                                                       link={"https://spodelenohvalenie.com/"}/>
+                                        <FooterNavItem name={"Споделено хваление"}  link={"https://spodelenohvalenie.com/"}/>
                                     </ul>
 
                                 </div>
@@ -83,7 +81,6 @@ function Footer() {
                 </div>
             </footer>
         </>
-
     );
 }
 

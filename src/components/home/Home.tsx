@@ -7,9 +7,9 @@
 import Intro from "./Intro.tsx";
 import Cards from "./Cards.tsx";
 
-function Landing() {
+function Home() {
     return (
-        <main>
+        <>
             <Intro/>
             <Cards/>
             {/*<HeroLeft />*/}
@@ -17,8 +17,8 @@ function Landing() {
             {/*<PeopleList/>*/}
             {/*<WorkWithUs/>*/}
             {/*<ContactForm/>*/}
-        </main>
+        </>
     );
 }
 
-export default Landing
+export default Home

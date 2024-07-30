@@ -1,15 +1,16 @@
 import {useState} from "react";
 import NavItem from "./NavItem.tsx";
 import LogButton from "./LogButton.tsx";
+import {Link} from "react-router-dom";
 
-type NavbarProps = {
+type HeaderProps = {
     transparent: boolean;
 };
 
-function Navbar({transparent}: NavbarProps) {
+function Header({transparent}: HeaderProps) {
     const [navbarOpen, setNavbarOpen] = useState(false);
     return (
-        <>
+        <header>
             <nav
                 className={
                     (transparent
@@ -20,15 +21,12 @@ function Navbar({transparent}: NavbarProps) {
             >
                 <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
                     <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-                        <a
-                            className={
-                                (transparent ? "text-white" : "text-gray-800") +
-                                " text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap"
-                            }
-                            href="/"
-                        >
+                        <Link to="/" className={
+                            (transparent ? "text-white" : "text-gray-800") +
+                            " text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap"
+                        }>
                             Lemme<i><b>GIG</b></i>
-                        </a>
+                        </Link>
                         <button
                             className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
                             type="button"
@@ -52,7 +50,7 @@ function Navbar({transparent}: NavbarProps) {
                         <ul className="flex flex-col lg:flex-row list-none mr-auto">
                             <NavItem transparent={transparent} name={"За нас"} link={"/about"}/>
                             <NavItem transparent={transparent} name={"Афиш"} link={"/affiche"}/>
-                            <NavItem transparent={transparent} name={"Контакт"} link={"/contact"}/>
+                            {/*<NavItem transparent={transparent} name={"Контакт"} link={"/contact"}/>*/}
                         </ul>
                         <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
                             <LogButton transparent={transparent} userLoggedIn={false}/>
@@ -60,9 +58,8 @@ function Navbar({transparent}: NavbarProps) {
                     </div>
                 </div>
             </nav>
-        </>
-
+        </header>
     );
 }
 
-export default Navbar
+export default Header
