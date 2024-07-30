@@ -9,7 +9,7 @@ function Cards(){
                             <div className="px-4 py-5 flex-auto">
                                 <div
                                     className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
-                                    <i className="fas fa-award"></i>
+                                    <i className="fas fa-baby"></i>
                                 </div>
                                 <h6 className="text-xl font-semibold">Репетиции</h6>
                                 <p className="mt-2 mb-4 text-gray-600">
@@ -25,7 +25,7 @@ function Cards(){
                             <div className="px-4 py-5 flex-auto">
                                 <div
                                     className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400">
-                                    <i className="fas fa-retweet"></i>
+                                    <i className="fas fa-star"></i>
                                 </div>
                                 <h6 className="text-xl font-semibold">
                                     Участия наживо
@@ -43,7 +43,7 @@ function Cards(){
                             <div className="px-4 py-5 flex-auto">
                                 <div
                                     className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400">
-                                    <i className="fas fa-fingerprint"></i>
+                                    <i className="fas fa-calendar"></i>
                                 </div>
                                 <h6 className="text-xl font-semibold">
                                     Календар (Очаквайте скоро)
