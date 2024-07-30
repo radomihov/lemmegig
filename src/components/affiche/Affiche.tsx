@@ -1,28 +1,14 @@
 import {useState, useEffect} from "react";
-
-const baseUrl=import.meta.env.VITE_API_BASE_URL;
-
-type GigProps = {
-    id: number,
-    imgUrl?: string,
-    name: string,
-    venue?: string,
-    artist?: string,
-    description?: string;
-    date?: string,
-    start?: string
-}
+import * as gigsAPI from '../../api/gigs-api'
+import {GigProps} from "../gigs/GigTypes.ts";
 
 function Affiche() {
     const [gigs, setGigs] = useState<GigProps[]>([]);
 
     useEffect(() => {
-        (async () => {
-            const response = await fetch(`${baseUrl}/gigs`);
-            const result = await response.json();
-            //TODO: Sort by date - show first upcoming
-            setGigs(result.data);
-        })();
+            gigsAPI.getPublic()
+                .then(result => setGigs(result.data));
+
     }, []);
 
     return (
