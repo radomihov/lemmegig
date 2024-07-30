@@ -7,9 +7,8 @@ function App() {
   return (
 
       <>
-        <Navbar transparent />
+        <Navbar transparent={true} />
         <Landing />
-        {/*<ComingSoon name={"Rado Mihov"}  age={38}/>*/}
         <Footer />
       </>
 
