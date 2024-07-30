@@ -1,30 +1,20 @@
-# React + TypeScript + Vite
+# LemmeGIG
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+LET ME GIG! As musicians we spend so much time on organizing stuff and gathering documents, lyrics, notation last minute, 
+so each practice becomes and 1/3 organzation, 1/3 talking and 1/3 actual rehearsing. Not you? Well that's my experience at least, having in mind that different projects use different media storing and messaging apps.
 
-Currently, two official plugins are available:
+At LemmeGIG we try to get all those chores under one roof and slowly but surely build an ecosystem where your gig data, docs and materials "live".
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Main functionalities
 
-## Expanding the ESLint configuration
+- Rehearsals - gather and share materials, demos and working docs; schedule and attend rehearsals
+- Virtual Stage - all members of a band can simultaneously see and make changes to songlist, chords (WIP) etc.
+- Calendar (under construction)
+- Affiche - all users public events, so that others can pay them a visit and support them
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Licence and usage
 
-- Configure the top-level `parserOptions` property like this:
+Currently, this project is still a baby and any code as of now (until further notice) can be used freely, but not for commercial goals.
+If the project survives baby-phase, it could be open for contribution. 
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+The project can be found on http://lemmegig.com where artist can make their profiles and start using the app, but bands can feel free to fork, fine tune and host the project themselves for their music journey.
