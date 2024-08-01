@@ -1,11 +1,12 @@
 export type GigProps = {
     id: number,
-    imgUrl?: string,
+    image?: string,
     name: string,
     venue?: string,
-    artist?: string,
-    description?: string;
+    artists?: string,
+    description?: string,
     date?: string,
-    start?: string,
+    time?: string,
+    fee?: string,
     isPublic?: boolean
 }
