@@ -19,12 +19,12 @@ function App() {
                     <Route path='/' element={<Home/>}/>
                     <Route path='/login' element={<Login/>}/>
                     {/*<Route path='/register' element={<Register/>}/>*/}
-                    <Route path='/affiche' element={<Affiche />}/>
-                    <Route path='/about' element={<About />}/>
-                    {/*<Route path='/contact' element={<ContactForm />}/>*/}
-                    {/*<Route path='/gigs' element={<Gigs />}/>*/}
-                    {/*<Route path='/gig/' element={<Gig />}/>*/}
-                    {/*<Route path='/profile' element={<Profile />}/>*/}
+                    <Route path='/affiche' element={<Affiche/>}/>
+                    <Route path='/about' element={<About/>}/>
+                    {/*<Route path='/contact' element={<ContactForm/>}/>*/}
+                    {/*<Route path='/gigs' element={<Gigs/>}/>*/}
+                    {/*<Route path='/gig/' element={<Gig/>}/>*/}
+                    {/*<Route path='/profile' element={<Profile/>}/>*/}
                 </Routes>
             </main>
             {pathname !== '/login' &&
