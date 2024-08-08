@@ -1,12 +1,7 @@
 import { Link } from "react-router-dom";
 
-type LogButtonProps = {
-    transparent: boolean;
-    userLoggedIn: boolean;
-};
-
-function LogButton({transparent, userLoggedIn}: LogButtonProps) {
-    const btnLink : string = userLoggedIn ? "/" : "/login";
+function LogButton({transparent, userLoggedIn}) {
+    const btnLink  = userLoggedIn ? "/" : "/login";
     return (
         <li className="flex items-center">
             <Link to={btnLink}>

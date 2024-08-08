@@ -1,4 +1,3 @@
-import regPNG from "../../assets/img/register_bg_2.png";
 
 export default function Login() {
     return (
@@ -7,7 +6,6 @@ export default function Login() {
                     <div
                         className="absolute top-0 w-full h-full bg-gray-900"
                         style={{
-                            backgroundImage: "url(" + regPNG + ")",
                             backgroundSize: "100%",
                             backgroundRepeat: "no-repeat"
                         }}

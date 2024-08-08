@@ -1,19 +1,8 @@
 
-export const baseUrl=import.meta.env.VITE_API_BASE_URL;
+export const BASE_URL=import.meta.env.VITE_API_BASE_URL;
+async function requester(method,url,data ) {
 
-type RequesterOptions = {
-    method?: string;
-    headers: Record <string, string>;
-    body?: string;
-};
-
-async function requester(
-                method: 'GET' | 'POST' | 'PUT' | 'DELETE',
-                url: string,
-                data?: JSON
-                        ) {
-
-    const options: RequesterOptions = {
+    const options= {
         headers: {'Content-Type' : ''},
     };
 

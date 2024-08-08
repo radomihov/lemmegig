@@ -1,13 +1,10 @@
 import {useState} from "react";
-import NavItem from "./NavItem.tsx";
-import LogButton from "./LogButton.tsx";
+import NavItem from "./NavItem.jsx";
+import LogButton from "./LogButton.jsx";
 import {Link} from "react-router-dom";
+import logo from '../../assets/img/lemmeGIG-logo.jpg';
 
-type HeaderProps = {
-    transparent: boolean;
-};
-
-function Header({transparent}: HeaderProps) {
+function Header({transparent}) {
     const [navbarOpen, setNavbarOpen] = useState(false);
     return (
         <header>
@@ -25,7 +22,7 @@ function Header({transparent}: HeaderProps) {
                             (transparent ? "text-white" : "text-gray-800") +
                             " text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap"
                         }>
-                            Lemme<i><b>GIG</b></i>
+                            <img src={logo} alt="LemmeGIG Logo" style={{height: '25px'}}/>
                         </Link>
                         <button
                             className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
@@ -50,7 +47,8 @@ function Header({transparent}: HeaderProps) {
                         <ul className="flex flex-col lg:flex-row list-none mr-auto">
                             <NavItem transparent={transparent} name={"За нас"} link={"/about"}/>
                             <NavItem transparent={transparent} name={"Афиш"} link={"/affiche"}/>
-                            {/*<NavItem transparent={transparent} name={"Контакт"} link={"/contact"}/>*/}
+                            <NavItem transparent={transparent} name={"Участия"} link={"/gigs"}/>
+                            <NavItem transparent={transparent} name={"Контакт"} link={"/contact"}/>
                         </ul>
                         <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
                             <LogButton transparent={transparent} userLoggedIn={false}/>
