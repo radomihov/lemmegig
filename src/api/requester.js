@@ -13,6 +13,7 @@ async function requester(method,url,data ) {
     if (data) {
         options.headers = {
             'Content-Type': 'application/json',
+            'Accept': 'application/json',
         };
 
         options.body = JSON.stringify(data);
