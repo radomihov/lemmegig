@@ -1,9 +1,9 @@
+export const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export const BASE_URL=import.meta.env.VITE_API_BASE_URL;
-async function requester(method,url,data ) {
+async function requester(method, url, data) {
 
-    const options= {
-        headers: {'Content-Type' : ''},
+    const options = {
+        headers: {'Content-Type': ''},
     };
 
     if (method !== 'GET') {
@@ -20,7 +20,13 @@ async function requester(method,url,data ) {
     }
 
     const response = await fetch(url, options);
-    return response.json();
+    const result = await response.json();
+
+    if (!response.ok) {
+        throw response;
+    }
+
+    return result;
 }
 
 export const get = requester.bind(null, 'GET');
