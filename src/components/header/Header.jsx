@@ -3,8 +3,9 @@ import NavItem from "./NavItem.jsx";
 import {Link} from "react-router-dom";
 import logo from '../../assets/img/logo.png';
 import {AuthContext} from "../../contexts/AuthContext.js";
+import Logout from "../auth/Logout.jsx";
 
-function Header({transparent}) {
+function Header() {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const {isAuthenticated} = useContext(AuthContext);
     return (
@@ -32,24 +33,29 @@ function Header({transparent}) {
                         }
                         id="example-navbar-warning"
                     >
-                        <ul className="flex flex-col lg:flex-row list-none mr-auto">
-                            <NavItem transparent={transparent} name={"За нас"} link={"/about"}/>
-                            <NavItem transparent={transparent} name={"Афиш"} link={"/affiche"}/>
-                            <NavItem transparent={transparent} name={"Участия"} link={"/gigs"}/>
-                            <NavItem transparent={transparent} name={"Контакт"} link={"/contact"}/>
-                        </ul>
+                        {isAuthenticated ?
+                            (
+                                <ul className="flex flex-col lg:flex-row list-none mr-auto">
+                                    <NavItem name={"Моите участия"} link={"/gigs"}/>
+                                </ul>
+                            ) : (
+                                <ul className="flex flex-col lg:flex-row list-none mr-auto">
+                                    <NavItem name={"За нас"} link={"/about"}/>
+                                    <NavItem name={"Афиш"} link={"/affiche"}/>
+                                </ul>)
+                        }
 
                         {isAuthenticated ?
                             (
                                 <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-                                    <NavItem transparent={transparent} name={"Регистрация"} link={"/registration"}/>
+                                    <NavItem name={"Моят профил"} link={"/profile"}/>
+                                    <Logout/>
                                 </ul>
                             ) : (
-                            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-                                <NavItem transparent={transparent} name={"Регистрация"} link={"/registration"}/>
-                                <NavItem transparent={transparent} name={"Вход"} link={"/login"}/>
-                            </ul>
-                    )
+                                <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+                                    <NavItem name={"Регистрация"} link={"/register"}/>
+                                    <NavItem name={"Вход"} link={"/login"}/>
+                                </ul>)
                         }
                     </div>
                 </div>

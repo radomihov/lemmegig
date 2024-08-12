@@ -16,6 +16,11 @@ async function requester(method, url, data) {
             'Accept': 'application/json',
         };
 
+        if (data.token) {
+            options.headers.Authorization = `Bearer ${data.token}`
+            delete data.token;
+        }
+
         options.body = JSON.stringify(data);
     }
 

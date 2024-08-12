@@ -1,4 +1,5 @@
 import {Routes, Route} from 'react-router-dom';
+import {useState} from "react";
 
 import Header from "./components/header/Header.jsx";
 import Home from "./components/home/Home.jsx";
@@ -9,16 +10,9 @@ import Affiche from "./components/affiche/Affiche.jsx";
 import Gigs from "./components/gigs/Gigs.jsx";
 import Gig from "./components/gigs/Gig.jsx";
 import Register from "./components/auth/Register.jsx";
-import {useState} from "react";
-import {AuthContext} from "./contexts/AuthContext.js";
 
-const noUserLoggedAuthState = {
-    token: '',
-    user: {
-        id: null,
-        email: '',
-    }
-}
+import {AuthContext} from "./contexts/AuthContext.js";
+import {noUserLoggedAuthState} from "./hooks/useAuth.js";
 
 function App() {
     //TODO: remove this from app component
@@ -28,8 +22,6 @@ function App() {
         //TODO: validation
         setAuthState(state)
     }
-    console.log("in App");
-    console.log(authState);
 
     const contextData = {
         userId: authState.user.id,

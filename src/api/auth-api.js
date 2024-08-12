@@ -5,4 +5,4 @@ export const login = (email, password) =>  request.post(`${BASE_URL}/login`, {em
 
 export const register = (name, email, password) =>  request.post(`${BASE_URL}/register`, {name, email, password});
 
-export const logout = (headers) =>  request.post(`${BASE_URL}/logout`, {headers});
+export const logout = (token) =>  request.post(`${BASE_URL}/logout`, {token});
