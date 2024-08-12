@@ -2,7 +2,7 @@ import FooterNavItem from "./FooterNavItem.jsx";
 import SocialLink from "./SocialLink.jsx";
 import {Link} from "react-router-dom";
 
-import logo from '../../assets/img/lemmeGIG-logo.jpg';
+import logo from '../../assets/img/logo.png';
 
 function Footer() {
     return (
