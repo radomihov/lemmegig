@@ -3,14 +3,6 @@ import {useContext} from "react";
 
 import {AuthContext} from "../contexts/AuthContext.js";
 
-export const noUserLoggedAuthState = {
-    token: '',
-    user: {
-        id: null,
-        email: '',
-    }
-}
-
 export function useLogin() {
     const {changeAuthState} = useContext(AuthContext);
 
@@ -42,7 +34,9 @@ export function useLogout() {
 
     const logoutHandler = async () => {
         await logout(token);
-        changeAuthState(noUserLoggedAuthState);
+        changeAuthState({
+            token: ''
+        });
     }
 
     return logoutHandler;

@@ -12,29 +12,31 @@ import Gig from "./components/gigs/Gig.jsx";
 import Register from "./components/auth/Register.jsx";
 
 import {AuthContext} from "./contexts/AuthContext.js";
-import {noUserLoggedAuthState} from "./hooks/useAuth.js";
+
+const initialState = {
+    token: localStorage.getItem('token')
+}
 
 function App() {
     //TODO: remove this from app component
-    const [authState, setAuthState] = useState(noUserLoggedAuthState);
+    const [authState, setAuthState] = useState(initialState);
 
     const changeAuthState = (state) => {
         //TODO: validation
-        setAuthState(state)
+        localStorage.setItem('token', state.token ?? '')
+        setAuthState(state);
     }
 
     const contextData = {
-        userId: authState.user.id,
-        email: authState.user.email,
         token: authState.token,
-        isAuthenticated: !!authState.user.email,
+        isAuthenticated: !!authState.token,
         changeAuthState
     }
 
     return (
         <AuthContext.Provider value = {contextData}>
             <div id="box">
-                <Header transparent={false}/>
+                <Header/>
                 <main id="main-content">
                     <Routes>
                         <Route path='/' element={<Home/>}/>
