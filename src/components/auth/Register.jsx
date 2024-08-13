@@ -38,7 +38,7 @@ export default function Register() {
 
         try {
             await register(name, email, password);
-            navigate('/');
+            navigate('/artists');
         } catch (err) {
             if (err.message) {
                 setError(err.message);

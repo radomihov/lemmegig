@@ -36,7 +36,11 @@ function Header() {
                         {isAuthenticated ?
                             (
                                 <ul className="flex flex-col lg:flex-row list-none mr-auto">
-                                    <NavItem name={"Моите участия"} link={"/gigs"}/>
+                                    <NavItem name={"График"} link={"/schedule"}/>
+                                    <NavItem name={"Участия"} link={"/gigs"}/>
+                                    <NavItem name={"Артисти"} link={"/artists"}/>
+                                    <NavItem name={"Места"} link={"/venues"}/>
+                                    {/*<NavItem name={"Песни"} link={"/songs"}/>*/}
                                 </ul>
                             ) : (
                                 <ul className="flex flex-col lg:flex-row list-none mr-auto">

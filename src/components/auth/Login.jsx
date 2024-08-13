@@ -13,7 +13,7 @@ export default function Login() {
     const loginHandler = async ({email, password}) => {
         try {
             await login(email, password);
-            navigate('/');
+            navigate('/schedule');
         } catch (err) {
             console.log(err.message);
         }
@@ -25,7 +25,7 @@ export default function Login() {
         <section className="bg-gray-50 dark:bg-gray-900">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <div className="mb-6 pb-10 md:mb-0">
-                    <Link to="/">
+                    <Link to="/e">
                         <img src={logo} alt="LemmeGIG Logo" style={{height: '50px'}}/>
                     </Link>
                 </div>

@@ -1,16 +1,14 @@
-"use client";
-
-import {useGetAllGigs} from "../../hooks/useGigs.js";
-function Gigs() {
-    const [gigs] = useGetAllGigs();
+export function Venues() {
     return (
         <section className="bg-white dark:bg-gray-900">
             <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
                 <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
                     <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Моите
-                        участия</h2>
-                    <p className="font-light text-gray-500 lg:mb-10 sm:text-xl dark:text-gray-400">В имаш участия с някой от твоите артисти.
-                        Кликни на някои от тях, за да видиш детайли и да ги редактираш, или създай ново. Публичните участия са видими и в афиша.</p>
+                        места</h2>
+                    <p className="font-light text-gray-500 lg:mb-10 sm:text-xl dark:text-gray-400">В момента участваш
+                        като собственик, барман, управител в следните заведения. Кликни на някои от
+                        тях, за да видиш детайли и да ги редактираш, или създай ново.
+                        Само заведения, в които се състоят публични участия са видими за други посетители на сайта (в афиша).</p>
                 </div>
                 <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
                     <div
@@ -245,39 +243,5 @@ function Gigs() {
                 </div>
             </div>
         </section>
-        // <div className="overflow-x-auto">
-        //     <Table striped>
-        //         <Table.Head>
-        //             <Table.HeadCell>Име</Table.HeadCell>
-        //             <Table.HeadCell>Участници</Table.HeadCell>
-        //             <Table.HeadCell>Място</Table.HeadCell>
-        //             <Table.HeadCell>Дата</Table.HeadCell>
-        //             <Table.HeadCell>Час</Table.HeadCell>
-        //             <Table.HeadCell>Вход</Table.HeadCell>
-        //             <Table.HeadCell>
-        //                 <span className="sr-only">Детайли</span>
-        //             </Table.HeadCell>
-        //         </Table.Head>
-        //         <Table.Body className="divide-y">
-        //             {gigs.map(gig => (
-        //                 <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800" key={gig.id}>
-        //                     <Table.Cell>{gig.name}</Table.Cell>
-        //                     <Table.Cell>{gig.artistNames}</Table.Cell>
-        //                     <Table.Cell>{gig.venueNames}</Table.Cell>
-        //                     <Table.Cell>{gig.date}</Table.Cell>
-        //                     <Table.Cell>{gig.time}</Table.Cell>
-        //                     <Table.Cell>{gig.fee}</Table.Cell>
-        //                     <Table.Cell>
-        //                         <Link to={`/gigs/${gig.id}`} className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-        //                             Виж повече
-        //                         </Link>
-        //                     </Table.Cell>
-        //                 </Table.Row>
-        //             ))}
-        //         </Table.Body>
-        //     </Table>
-        // </div>
     );
 }
-
-export default Gigs

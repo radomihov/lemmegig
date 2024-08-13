@@ -1,9 +1,14 @@
+
+
 export const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 async function requester(method, url, data) {
 
     const options = {
-        headers: {'Content-Type': ''},
+        headers: {
+            'Content-Type': '',
+            'Accept': 'application/json',
+        },
     };
 
     if (method !== 'GET') {
@@ -11,17 +16,12 @@ async function requester(method, url, data) {
     }
 
     if (data) {
-        options.headers = {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        };
-
-        if (data.token) {
-            options.headers.Authorization = `Bearer ${data.token}`
-            delete data.token;
-        }
-
+        options.headers["Content-Type"] = 'application/json';
         options.body = JSON.stringify(data);
+    }
+
+    if (localStorage.getItem('token') !== '') {
+        options.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
     }
 
     const response = await fetch(url, options);
