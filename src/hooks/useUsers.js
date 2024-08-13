@@ -11,6 +11,7 @@ export function useGetAllUsers() {
     }, []);
     return [users, setUsers];
 }
+
 export function useGetOneUser(userId) {
     const [user, setUser] = useState();
 
@@ -24,11 +25,15 @@ export function useGetOneUser(userId) {
 
 export function useGetCurrUser() {
     const [user, setUser] = useState();
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         usersAPI.getCurrent()
-            .then((result => setUser(result)));
+            .then((result => {
+                setUser(result)
+                setIsLoading(false)
+            }));
     }, []);
 
-    return [user, setUser];
+    return {user, setUser, isLoading};
 }

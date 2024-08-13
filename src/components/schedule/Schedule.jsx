@@ -1,19 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { Table, Spinner } from "flowbite-react";
 import { useGetAllMeetups } from "../../hooks/useMeetups.js";
 
 function Schedule() {
-    const [meetups] = useGetAllMeetups();
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        console.log(meetups);
-        if (meetups.length != 0) {
-            setIsLoading(false);
-        }
-    }, [meetups]);
+    const { meetups, isLoading} = useGetAllMeetups();
 
     return (
         <section className="bg-white dark:bg-gray-900 antialiased">

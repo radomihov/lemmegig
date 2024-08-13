@@ -1,16 +1,8 @@
 import {useGetCurrUser} from "../../hooks/useUsers.js";
-import { useState, useEffect } from "react";
 import { Spinner } from "flowbite-react";
 
 export default function Profile() {
-    const [user] = useGetCurrUser();
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        if (user !== undefined) {
-            setIsLoading(false);
-        }
-    }, [user]);
+    const {user, isLoading} = useGetCurrUser();
 
     return (
         <>
