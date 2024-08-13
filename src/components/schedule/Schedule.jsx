@@ -11,7 +11,7 @@ function Schedule() {
             <div className="max-w-screen-xl px-4 py-8 mx-auto lg:px-6 sm:py-16 lg:py-24">
                 <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
                     <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">График</h2>
-                    <p className="font-light text-gray-500 lg:mb-10 sm:text-xl dark:text-gray-400"> Тук ще виждаш следващите репетиции ("куха" звездичка) или участия ("пълна" звездичка). Клкни на "Виж", за да видиш детайли и да редактираш. </p>
+                    <p className="font-light text-gray-500 lg:mb-10 sm:text-xl dark:text-gray-400"> Тук ще виждаш следващите репетиции ("куха" звездичка) или участия ("пълна" звездичка). Кликни на "Виж", за да видиш детайли и да редактираш. </p>
                 </div>
                 <div className="flow-root max-w-4xl mx-auto mt-8 sm:mt-12 lg:mt-16">
                     {isLoading ? (

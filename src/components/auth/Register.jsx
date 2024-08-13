@@ -6,7 +6,12 @@ import {Link, useNavigate} from "react-router-dom";
 import logo from '../../assets/img/logo.png';
 
 
-const initialValues = { name: '', email: '', password: '', confirmPassword: '' };
+const initialValues = {
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+};
 
 export default function Register() {
     const [error, setError] = useState('');
@@ -15,12 +20,12 @@ export default function Register() {
 
     const registerHandler = async ({name, email, password, confirmPassword}) => {
 
-        if (!name){
+        if (!name) {
             setError("Не са въведени имена");
             return;
         }
 
-        if (!email){
+        if (!email) {
             setError("Не е въведен имейл");
             return;
         }
@@ -31,7 +36,7 @@ export default function Register() {
         //     return;
         // }
 
-        if (password !== confirmPassword){
+        if (password !== confirmPassword) {
             setError("Паролите не съвпадат");
             return;
         }
@@ -94,7 +99,8 @@ export default function Register() {
                                 <label htmlFor="confirm-password"
                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Повтори
                                     парола</label>
-                                <input type="password" name="confirmPassword" id="confirm-password"  value={values.confirmPassword}
+                                <input type="password" name="confirmPassword" id="confirm-password"
+                                       value={values.confirmPassword}
                                        onChange={changeHandler}
                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="••••••••" required=""/>

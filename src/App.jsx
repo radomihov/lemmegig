@@ -16,8 +16,10 @@ import Profile from "./components/profile/Profile.jsx";
 import Schedule from "./components/schedule/Schedule.jsx";
 import Artists from "./components/artists/Artists.jsx";
 import Artist from "./components/artists/Artist.jsx";
-import {Venues} from "./components/venues/Venues.jsx";
 import {Venue} from "./components/venues/Venue.jsx";
+import CreateArtist from "./components/artists/CreateArtist.jsx";
+import Venues from "./components/venues/Venues.jsx";
+import CreateVenue from "./components/venues/CreateVenue.jsx";
 
 const initialState = {
     token: localStorage.getItem('token')
@@ -62,9 +64,13 @@ function App() {
 
                                 <Route path='/venues' element={<Venues/>}/>
                                 <Route path='/venues/:id' element={<Venue/>}/>
+                                <Route path='/venues/create' element={<CreateVenue/>}/>
 
                                 <Route path='/artists' element={<Artists/>}/>
                                 <Route path='/artists/:id' element={<Artist/>}/>
+                                <Route path='/artists/create' element={<CreateArtist/>}/>
+                                {/*<Route path='/artists/:id/edit' element={<EditArtist/>}/>*/}
+
 
                                 {/*<Route path='/songs' element={<Songs/>}/>*/}
                                 {/*<Route path='/song/:id' element={<Song/>}/>*/}

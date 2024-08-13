@@ -1,5 +1,5 @@
-import {login, register, logout} from "../api/auth-api.js";
 import {useContext} from "react";
+import {login, register, logout} from "../api/auth-api.js";
 
 import {AuthContext} from "../contexts/AuthContext.js";
 
