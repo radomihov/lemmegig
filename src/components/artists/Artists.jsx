@@ -15,13 +15,19 @@ function Artists() {
                         <Spinner size="lg"/>
                     </div>
                 ) : artists?.length === 0 ? (
-                    <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-                        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Моите
-                            артисти</h2>
-                        <p className="font-light text-gray-500 lg:mb-10 sm:text-xl dark:text-gray-400">Все още нямате
-                            артист. Направете първия си артист ТУК или помолете ваш колега да ви добави във вече
-                            съществуващ.</p>
+                    <div>
+                        <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+                            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Моите
+                                артисти</h2>
+                            <p className="font-light text-gray-500 lg:mb-10 sm:text-xl dark:text-gray-400">Все още
+                                нямате
+                                артист. Направете първия си артист.</p>
+                        </div>
+                        <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
+                            <CreateArtistCard></CreateArtistCard>
+                        </div>
                     </div>
+
                 ) : (
                     <div>
                         <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">

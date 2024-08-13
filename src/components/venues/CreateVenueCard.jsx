@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 export function CreateVenueCard() {
     return (
-        <Link to="/artists/create"
+        <Link to="/venues/create"
               className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
             <svg className="w-[80px] h-[80px] text-gray-800 dark:text-white m-10" aria-hidden="true"
                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">

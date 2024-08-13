@@ -65,6 +65,7 @@ function App() {
                                 <Route path='/venues' element={<Venues/>}/>
                                 <Route path='/venues/:id' element={<Venue/>}/>
                                 <Route path='/venues/create' element={<CreateVenue/>}/>
+                                {/*<Route path='/venues/:id/edit' element={<EditVenues/>}/>*/}
 
                                 <Route path='/artists' element={<Artists/>}/>
                                 <Route path='/artists/:id' element={<Artist/>}/>
