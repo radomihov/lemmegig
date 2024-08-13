@@ -3,19 +3,35 @@ import {useForm} from "../../hooks/useForm.js";
 import {Link, useNavigate} from "react-router-dom";
 
 import logo from '../../assets/img/logo.png';
+import {useState} from "react";
 
 const initialValues = {email: '', password: ''};
 
 export default function Login() {
+    const [error, setError] = useState('');
     const login = useLogin();
     const navigate = useNavigate();
 
     const loginHandler = async ({email, password}) => {
+        if (!email) {
+            setError("Не е въведен имейл");
+            return;
+        }
+
+        if (!password) {
+            setError("Не е въведена парола");
+            return;
+        }
+
         try {
             await login(email, password);
             navigate('/schedule');
         } catch (err) {
-            console.log(err.message);
+            if (err.message) {
+                setError(err.message);
+            } else {
+                setError("Невъзможна влизане. Възможно е да няма потребител с този имейл.")
+            }
         }
     };
 
@@ -52,6 +68,11 @@ export default function Login() {
                                        className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="••••••••" required=""/>
                             </div>
+                            {error && (
+                                <p className="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                    className="font-medium">{error}</span>
+                                </p>
+                            )}
                             {/*<div className="flex items-center justify-between">*/}
                             {/*    <div className="flex items-start">*/}
                             {/*        <div className="flex items-center h-5">*/}
