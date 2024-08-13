@@ -35,17 +35,3 @@ export function useCreateVenues() {
 
     return createVenueHandler;
 }
-
-// export function useEditVenues() {
-//     const [venues, setVenues] = useState();
-//     const [isLoading, setIsLoading] = useState(true);
-//
-//     useEffect(() => {
-//         venuesAPI.getAll()
-//             .then(result => {
-//                 setVenues(result.data)
-//                 setIsLoading(false)
-//             });
-//     }, []);
-//     return {venues, setVenues, isLoading};
-// }

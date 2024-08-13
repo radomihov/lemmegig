@@ -1,57 +1,45 @@
-import {Link} from "react-router-dom";
-import {useGetAllGigs} from "../../hooks/useGigs.js";
+import {useGetAllPublicGigs} from "../../hooks/useGigs.js";
+import {Spinner} from "flowbite-react";
+import {GigCard} from "../gigs/GigCard.jsx";
 
 function Affiche() {
-    const [gigs] = useGetAllGigs();
+    const {gigs, isLoading} = useGetAllPublicGigs();
 
     return (
-        <div className="max-w-7xl mx-auto my-8 px-2">
+        <section className="bg-white dark:bg-gray-900">
+            <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
+                {isLoading ? (
+                    <div className="flex justify-center items-center pt-20 pb-20">
+                        <Spinner size="lg"/>
+                    </div>
+                ) : gigs?.length === 0 ? (
+                    <div>
+                        <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+                            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Нашият културен афиш</h2>
+                            <p className="font-light text-gray-500 lg:mb-10 sm:text-xl dark:text-gray-400">
+                                В момента няма предстоящи събития на нашите артисти.
+                            </p>
+                        </div>
+                    </div>
 
-            <div className="flex justify-center text-2xl md:text-3xl font-bold mb-4">
-                Предстоящи събития
+                ) : (
+                    <div>
+                        <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+                            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                                Нашият културен афиш</h2>
+                            <p className="font-light text-gray-500 lg:mb-10 sm:text-xl dark:text-gray-400">
+                                Разгледайте предстоящите събития на нашите артисти.
+                            </p>
+                        </div>
+                        <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
+                            {gigs?.map((gig) => (
+                                <GigCard gig={gig} key={gig.id}></GigCard>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
-
-            <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 p-2 xl:p-5">
-                {gigs.map(gig => (
-                    gig.isPublic && (
-                        <Link to={`/gigs/${gig.id}`} key={gig.id}>
-                            <li className="relative bg-white flex flex-col justify-between border rounded shadow-md hover:shadow-primary-400" >
-                                <div className="relative w-full aspect-video">
-                                    <img className="rounded w-full h-full object-cover"
-                                         src={gig.image ?? "https://assets.petco.com/petco/image/upload/f_auto,q_auto/rabbit-care-sheet"}
-                                         alt={gig.name} loading="lazy"/>
-
-                                    <div
-                                        className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-b from-gray-800 to-gray-500 text-white">
-                                        <h2 className="text-xl font-semibold">{gig.name}</h2>
-                                        <p className="font-medium text-sm">Място: {gig.venueNames ?? "Неизвестно място"}</p>
-                                        <p className="font-medium text-sm">Участват: {gig.artistNames ?? "Неизвестен артист"}</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex flex-col justify-beetween gap-3 px-4 py-2">
-
-                                    <p className="text-gray-600 two-lines">
-                                        {gig.description}
-                                    </p>
-                                    <ul className="flex flex-wrap text-sm gap-2 my-1">
-                                        <li className="flex items-center gap-2"  key={`${gig.id}-date`}>`
-                                            <span>Начало: {gig.date ?? "неизвестно"} </span>
-                                        </li>
-                                        <li className="flex items-center gap-2" key={`${gig.id}-time`}>
-                                            <span>{gig.time}</span>
-                                        </li>
-                                        <li className="flex items-center gap-2" key={`${gig.id}-fee`}>
-                                            <span> Вход: {gig.fee ?? "неизвестен"}</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </Link>
-                    )
-                ))}
-            </ul>
-        </div>
+        </section>
     );
 }
 

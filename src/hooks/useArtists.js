@@ -35,17 +35,3 @@ export function useCreateArtists() {
 
     return createArtistHandler;
 }
-
-// export function useEditArtists() {
-//     const [artists, setArtists] = useState();
-//     const [isLoading, setIsLoading] = useState(true);
-//
-//     useEffect(() => {
-//         artistsAPI.getAll()
-//             .then(result => {
-//                 setArtists(result.data)
-//                 setIsLoading(false)
-//             });
-//     }, []);
-//     return {artists, setArtists, isLoading};
-// }

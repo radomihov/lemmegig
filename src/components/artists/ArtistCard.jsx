@@ -10,8 +10,7 @@ export function ArtistCard({artist}) {
                  src={artist?.image ?? noImage}
                  alt="снимка"/>
             <div className="p-5">
-                <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    <a href={`/artists/${artist?.id}`}>{artist?.name}</a>
+                <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">{artist?.name}
                 </h3>
                 <span className="text-gray-500 dark:text-gray-400">{artist?.place ?? "без локация"}</span>
                 <div className="text-gray-500 dark:text-gray-400">{artist?.genres ?? "без жанр"}</div>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import radoProfilePic from '../../assets/img/rado_profile.jpg';
 
 function About() {
   return (
@@ -27,7 +28,7 @@ function About() {
             <div className="px-6">
               <img
                 alt="..."
-                src="https://scontent.fsof10-1.fna.fbcdn.net/v/t39.30808-6/447736880_10233464373848577_6232705938204417560_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=ggxXwx3zglkQ7kNvgHySwM6&_nc_ht=scontent.fsof10-1.fna&cb_e2o_trans=q&gid=AJ14c5kli8QEzAsnhhHd_GK&oh=00_AYCa9VdcRcpr0-jLJRT0sfnGDjhNLm_lQRKjz4sMCg1NBg&oe=66AEE025"
+                src={radoProfilePic}
                 className="shadow-lg rounded-full max-w-full mx-auto"
                 style={{ maxWidth: "120px" }}
               />
