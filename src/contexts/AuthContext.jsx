@@ -13,7 +13,7 @@ export  function AuthContextProvider(props) {
 
     const changeAuthState = (state) => {
         //TODO: validation
-        localStorage.setItem('accessToken', state.token)
+        localStorage.setItem('auth', state)
         setAuthState(state);
     }
 
