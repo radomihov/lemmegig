@@ -31,9 +31,7 @@ export function useLogout() {
 
     const logoutHandler = async () => {
         await logout(accessToken);
-        changeAuthState({
-            accessToken: ''
-        });
+        changeAuthState({});
     }
 
     return logoutHandler;
