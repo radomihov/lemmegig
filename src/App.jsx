@@ -11,7 +11,7 @@ import Gigs from "./components/gigs/Gigs.jsx";
 import Gig from "./components/gigs/Gig.jsx";
 import Register from "./components/auth/Register.jsx";
 
-import {AuthContext} from "./contexts/AuthContext.js";
+import {AuthContextProvider} from "./contexts/AuthContext.jsx";
 import Profile from "./components/profile/Profile.jsx";
 import Schedule from "./components/schedule/Schedule.jsx";
 import Artists from "./components/artists/Artists.jsx";
@@ -21,28 +21,9 @@ import CreateArtist from "./components/artists/CreateArtist.jsx";
 import Venues from "./components/venues/Venues.jsx";
 import CreateVenue from "./components/venues/CreateVenue.jsx";
 
-const initialState = {
-    token: localStorage.getItem('token')
-}
-
 function App() {
-    //TODO: remove this from app component
-    const [authState, setAuthState] = useState(initialState);
-
-    const changeAuthState = (state) => {
-        //TODO: validation
-        localStorage.setItem('token', state.token ?? '')
-        setAuthState(state);
-    }
-
-    const contextData = {
-        token: authState.token,
-        isAuthenticated: !!authState.token,
-        changeAuthState
-    }
-
     return (
-        <AuthContext.Provider value = {contextData}>
+        <AuthContextProvider >
             <div id="box"  className="flex flex-col min-h-screen">
                 <Header/>
                 <main id="main-content" className="flex-grow">
@@ -53,35 +34,30 @@ function App() {
                         <Route path='/login' element={<Login/>}/>
                         <Route path='/register' element={<Register/>}/>
 
-                        { contextData.isAuthenticated && (
-                            <>
-                                <Route path='/profile' element={<Profile/>}/>
+                        <Route path='/profile' element={<Profile/>}/>
 
-                                <Route path='/schedule' element={<Schedule/>}/>
+                        <Route path='/schedule' element={<Schedule/>}/>
 
-                                <Route path='/gigs' element={<Gigs/>}/>
-                                <Route path='/gigs/:id' element={<Gig/>}/>
+                        <Route path='/gigs' element={<Gigs/>}/>
+                        <Route path='/gigs/:id' element={<Gig/>}/>
 
-                                <Route path='/venues' element={<Venues/>}/>
-                                <Route path='/venues/:id' element={<Venue/>}/>
-                                <Route path='/venues/create' element={<CreateVenue/>}/>
-                                {/*<Route path='/venues/:id/edit' element={<EditVenues/>}/>*/}
+                        <Route path='/venues' element={<Venues/>}/>
+                        <Route path='/venues/:id' element={<Venue/>}/>
+                        <Route path='/venues/create' element={<CreateVenue/>}/>
+                        {/*<Route path='/venues/:id/edit' element={<EditVenues/>}/>*/}
 
-                                <Route path='/artists' element={<Artists/>}/>
-                                <Route path='/artists/:id' element={<Artist/>}/>
-                                <Route path='/artists/create' element={<CreateArtist/>}/>
-                                {/*<Route path='/artists/:id/edit' element={<EditArtist/>}/>*/}
+                        <Route path='/artists' element={<Artists/>}/>
+                        <Route path='/artists/:id' element={<Artist/>}/>
+                        <Route path='/artists/create' element={<CreateArtist/>}/>
+                        {/*<Route path='/artists/:id/edit' element={<EditArtist/>}/>*/}
 
-
-                                {/*<Route path='/songs' element={<Songs/>}/>*/}
-                                {/*<Route path='/song/:id' element={<Song/>}/>*/}
-                            </>
-                        )}
+                        {/*<Route path='/songs' element={<Songs/>}/>*/}
+                        {/*<Route path='/song/:id' element={<Song/>}/>*/}
                     </Routes>
                 </main>
                     <Footer />
             </div>
-        </AuthContext.Provider>
+        </AuthContextProvider>
     )
 }
 

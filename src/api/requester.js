@@ -20,8 +20,8 @@ async function requester(method, url, data) {
         options.body = JSON.stringify(data);
     }
 
-    if (localStorage.getItem('token') !== '') {
-        options.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
+    if (localStorage.getItem('accessToken') !== '') {
+        options.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`
     }
 
     const response = await fetch(url, options);

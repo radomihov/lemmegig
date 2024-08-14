@@ -1,13 +1,13 @@
-import {useContext, useState} from "react";
+import {useState} from "react";
 import NavItem from "./NavItem.jsx";
 import {Link} from "react-router-dom";
 import logo from '../../assets/img/logo.png';
-import {AuthContext} from "../../contexts/AuthContext.js";
+import {useAuthContext} from "../../contexts/AuthContext.jsx";
 import Logout from "../auth/Logout.jsx";
 
 function Header() {
     const [navbarOpen, setNavbarOpen] = useState(false);
-    const {isAuthenticated} = useContext(AuthContext);
+    const {isAuthenticated} = useAuthContext();
     return (
         <header>
             <nav
