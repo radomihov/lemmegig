@@ -21,6 +21,7 @@ export function useGetOneGig(gigId) {
     const [isLoading, setIsLoading] = useState(true);
     const {user} = useAuthContext();
     const [isOwner, setIsOwner] = useState(false);
+    const [isParticipant, setIsParticipant] = useState(false);
 
     useEffect(() => {
         gigsAPI.getOne(gigId)
@@ -29,11 +30,14 @@ export function useGetOneGig(gigId) {
                 if (user?.id === result.data.created_by) {
                     setIsOwner(true);
                 }
+                if (result.data.participants.includes(user?.id)) {
+                    setIsParticipant(true)
+                }
                 setIsLoading(false)
             }));
     }, [gigId]);
 
-    return {gig, setGig, isLoading, isOwner};
+    return {gig, setGig, isLoading, isOwner, isParticipant};
 }
 
 export function useGetAllPublicGigs() {
@@ -66,8 +70,8 @@ export function useGetOnePublicGig(gigId) {
 }
 
 export function useCreateGig() {
-    const createGigHandler = async (name, description, fee, is_public, image) => {
-        const {newGig} = await create(name, description, fee, is_public, image);
+    const createGigHandler = async (name, description, fee, isPublic, image) => {
+        const {newGig} = await create(name, description, fee, isPublic, image);
 
         return newGig;
     }
@@ -86,8 +90,8 @@ export function useDeleteGig() {
 }
 
 export function useEditGig() {
-    const editGigHandler = async (id, name, description, fee, is_public, image) => {
-        const {editedGig} = await edit(id, name, description, fee, is_public, image);
+    const editGigHandler = async (id, name, description, fee, isPublic, image) => {
+        const {editedGig} = await edit(id, name, description, fee, isPublic, image);
 
         return editedGig;
     }

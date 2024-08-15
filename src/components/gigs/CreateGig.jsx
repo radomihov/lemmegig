@@ -8,7 +8,7 @@ const initialValues = {
     name: '',
     description: '',
     fee: '',
-    is_public: false,
+    isPublic: false,
     image: ''
 };
 
@@ -17,7 +17,7 @@ export default function CreateGig() {
     const create = useCreateGig();
     const navigate = useNavigate();
 
-    const createGigHandler = async ({name, description, fee, is_public, image}) => {
+    const createGigHandler = async ({name, description, fee, isPublic, image}) => {
         if (!name) {
             setError("Не e въведено име");
             return;
@@ -29,7 +29,7 @@ export default function CreateGig() {
         }
 
         try {
-            await create(name, description, fee, is_public, image);
+            await create(name, description, fee, isPublic, image);
             navigate('/gigs');
         } catch (err) {
             if (err.message) {
@@ -89,8 +89,8 @@ export default function CreateGig() {
                                           placeholder="Идеята и мисията на събитието"/>
                             </div>
                             <div className="flex flex-wrap">
-                                <input type="checkbox" name="is_public" id="is_public" value={values.is_public} onChange={changeHandler}/>
-                                <label htmlFor="is_public"
+                                <input type="checkbox" name="isPublic" id="isPublic" value={values.isPublic} onChange={changeHandler}/>
+                                <label htmlFor="isPublic"
                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white mx-5">Публично
                                     събитие</label>
                             </div>

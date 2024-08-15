@@ -8,7 +8,7 @@ const initialValues = {
     name: '',
     description: '',
     fee: '',
-    is_public: false,
+    isPublic: false,
     image: ''
 };
 
@@ -18,7 +18,7 @@ export default function EditGig() {
     const edit = useEditGig();
     const navigate = useNavigate();
     const [error, setError] = useState('');
-    const editGigHandler = async ({name, description, fee, is_public, image}) => {
+    const editGigHandler = async ({name, description, fee, isPublic, image}) => {
 
         if (!name) {
             setError("Не e въведено име");
@@ -26,7 +26,7 @@ export default function EditGig() {
         }
 
         try {
-            await edit(id, name, description, fee, is_public, image);
+            await edit(id, name, description, fee, isPublic, image);
             navigate(`/gigs/${id}`);
         } catch (err) {
             if (err.message) {
@@ -87,9 +87,9 @@ export default function EditGig() {
                                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
                             </div>
                             <div className="flex flex-wrap">
-                                <input type="checkbox" name="is_public" id="is_public" value={values.is_public}
+                                <input type="checkbox" name="isPublic" id="isPublic" checked={values?.isPublic}
                                        onChange={changeHandler}/>
-                                <label htmlFor="is_public"
+                                <label htmlFor="isPublic"
                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white mx-5">Публично
                                     събитие</label>
                             </div>
