@@ -14,13 +14,22 @@ function Venues() {
                         <Spinner size="lg"/>
                     </div>
                 ) : venues?.length === 0 ? (
-                    <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-                        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Моите
-                            места</h2>
-                        <p className="font-light text-gray-500 lg:mb-10 sm:text-xl dark:text-gray-400">
-                            Създай място, в което отговаряш за участията (като собственик, барман) и следи събитията.
-                            Само заведения, в които се състоят публични участия са видими за други посетители на сайта
-                            (в афиша).</p>
+                    <div>
+                        <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+                            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Моите
+                                места</h2>
+                            <p className="font-light text-gray-500 lg:mb-10 sm:text-xl dark:text-gray-400">Все още
+                                нямаш места за участие.</p>
+                            <p className="font-light text-gray-500 lg:mb-10 sm:text-xl dark:text-gray-400">
+                                Създай място, в което отговаряш за участията (като собственик, барман) и следи
+                                събитията.
+                                Само заведения, в които се състоят публични участия са видими за други посетители на
+                                сайта
+                                (в афиша).</p>
+                        </div>
+                        <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
+                            <CreateVenueCard></CreateVenueCard>
+                        </div>
                     </div>
                 ) : (
                     <div>
@@ -36,7 +45,7 @@ function Venues() {
                                 (в афиша).</p>
                         </div>
                         <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-                            <CreateVenueCard></CreateVenueCard>
+                        <CreateVenueCard></CreateVenueCard>
                             {venues?.map((venue) => (
                                 <VenueCard venue={venue} key={venue.id}></VenueCard>
                             ))}

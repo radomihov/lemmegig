@@ -20,8 +20,10 @@ function Artists() {
                             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Моите
                                 артисти</h2>
                             <p className="font-light text-gray-500 lg:mb-10 sm:text-xl dark:text-gray-400">Все още
-                                нямате
-                                артист. Направете първия си артист.</p>
+                                нямаш артисти.</p>
+                            <p className="font-light text-gray-500 lg:mb-10 sm:text-xl dark:text-gray-400">
+                                Създай артист или група, от която си част, за да можеш да участваш в репетиции и усвирения наживо.
+                            Само артисти, участващи в публи§ни събития, ще са видими за всички в нашия афиш.</p>
                         </div>
                         <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
                             <CreateArtistCard></CreateArtistCard>
