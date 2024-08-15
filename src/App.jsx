@@ -49,8 +49,8 @@ function App() {
 
                             <Route path='/gigs' element={<Gigs/>}/>
                             <Route path='/gigs/:id' element={<Gig/>}/>
-                            <Route path='/meetups/create' element={<CreateGig/>}/>
-                            <Route path='/meetups/:id/edit' element={<EditGig/>}/>
+                            <Route path='/gigs/create' element={<CreateGig/>}/>
+                            <Route path='/gigs/:id/edit' element={<EditGig/>}/>
 
                             <Route path='/venues' element={<Venues/>}/>
                             <Route path='/venues/:id' element={<Venue/>}/>

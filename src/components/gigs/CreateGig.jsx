@@ -1,8 +1,8 @@
+"use client";
 import {useState} from "react";
 import {useCreateGig} from "../../hooks/useGigs.js";
 import {useForm} from "../../hooks/useForm.js";
 import {useNavigate} from "react-router-dom";
-
 
 const initialValues = {
     name: '',
@@ -18,9 +18,13 @@ export default function CreateGig() {
     const navigate = useNavigate();
 
     const createGigHandler = async ({name, description, fee, is_public, image}) => {
-
         if (!name) {
             setError("Не e въведено име");
+            return;
+        }
+
+        if (!fee) {
+            setError("Не e въведен вход");
             return;
         }
 
@@ -46,13 +50,13 @@ export default function CreateGig() {
                     className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                            Създай артист
+                            Създай участие
                         </h1>
                         <form className="space-y-4 md:space-y-6" onSubmit={submitHandler}>
                             <div>
                                 <label htmlFor="name"
                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Име на
-                                    артиста</label>
+                                    участието</label>
                                 <input type="text" name="name" id="name" value={values.name}
                                        onChange={changeHandler}
                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -84,12 +88,16 @@ export default function CreateGig() {
                                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                           placeholder="Идеята и мисията на събитието"/>
                             </div>
-                            <div>
-                                <label htmlFor="description"
-                                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Публично
+                            <div className="flex flex-wrap">
+                                <input type="checkbox" name="is_public" id="is_public" value={values.is_public} onChange={changeHandler}/>
+                                <label htmlFor="is_public"
+                                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white mx-5">Публично
                                     събитие</label>
-                                <input type="checkbox" name="is_public" id="is_public" value={values.is_public}/>
                             </div>
+
+                            <p className="font-light text-gray-500 lg:mb-10 sm:text-sm dark:text-gray-400">
+                                След създаване ще можеш да добавиш сесии с различни артисти, места и начални дата и
+                                час на събитието.</p>
 
                             {error && (
                                 <p className="mt-2 text-sm text-red-600 dark:text-red-500"><span
@@ -98,7 +106,7 @@ export default function CreateGig() {
                             )}
                             <button type="submit"
                                     className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Създай
-                                артист
+                                участие
                             </button>
                         </form>
                     </div>

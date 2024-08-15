@@ -75,9 +75,9 @@ export function useCreateGig() {
     return createGigHandler;
 }
 export function useDeleteGig() {
-    const deleteGigHandler = async (artistId) => {
+    const deleteGigHandler = async (gigId) => {
 
-        const {res} = await del(artistId);
+        const {res} = await del(gigId);
 
         return res;
     }

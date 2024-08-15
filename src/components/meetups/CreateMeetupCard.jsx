@@ -11,7 +11,7 @@ export function CreateMeetupCard() {
                  src={newArtist}
                  alt="снимка"/>
             <div className="p-5">
-                <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">Създай нов артист</h3>
+                <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">Създай нова среща</h3>
             </div>
         </Link>
     );
