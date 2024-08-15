@@ -6,6 +6,7 @@ export default function Meetup() {
     const {id} = useParams();
     const {meetup, isLoading, isOwner} = useGetOneMeetup(id);
     const del = useDeleteMeetup();
+
     const deleteBtnHandler = () => {
         del(id);
     }

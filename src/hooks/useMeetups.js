@@ -25,7 +25,6 @@ export function useGetOneMeetup(meetupId) {
     useEffect(() => {
         meetupsAPI.getOne(meetupId)
             .then((result => {
-                console.log(result.data)
                 setMeetup(result.data)
                 if (user?.id === result.data.created_by) {
                     setIsOwner(true);
