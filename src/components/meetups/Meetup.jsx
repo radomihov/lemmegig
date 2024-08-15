@@ -1,13 +1,11 @@
-import {useDeleteVenue, useGetOneVenue} from "../../hooks/useVenues.js";
-import noImage from '../../assets/img/no-image-svgrepo-com.svg';
+import {useDeleteMeetup, useGetOneMeetup} from "../../hooks/useMeetups.js";
 import {Link, useParams} from "react-router-dom";
 import {Spinner} from "flowbite-react";
 
-export default function Venue() {
+export default function Meetup() {
     const {id} = useParams();
-    const {venue, isLoading, isOwner} = useGetOneVenue(id);
-    const del = useDeleteVenue();
-
+    const {meetup, isLoading, isOwner} = useGetOneMeetup(id);
+    const del = useDeleteMeetup();
     const deleteBtnHandler = () => {
         del(id);
     }
@@ -22,31 +20,26 @@ export default function Venue() {
                         </div>
                     ) : (
                         <div>
-                            <figure className="max-w-lg">
-                                <img className="h-auto max-w-40 rounded-lg m-5" src={venue?.image ?? noImage} alt={venue?.name}/>
-                                <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">
-                                </figcaption>
-                            </figure>
                             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                                 <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                                    {venue?.name}
+                                    {meetup?.gig} - {meetup?.type_label}
                                 </h1>
                                 <div className="space-y-4 md:space-y-6">
-                                    <p className=" text-gray-500 dark:text-gray-400"><b>Адрес:</b> {venue?.address}</p>
-                                    <p className=" text-gray-500 dark:text-gray-400"><b>Телефон:</b> {venue?.phone}</p>
-                                    <p className=" text-gray-500 dark:text-gray-400"><b>Имейл:</b> {venue?.email}</p>
-                                    <p className=" text-gray-500 dark:text-gray-400"><b>Биография:</b> {venue?.description}</p>
+                                    <p className=" text-gray-500 dark:text-gray-400"><b>Артисти:</b> {meetup?.artists}</p>
+                                    <p className=" text-gray-500 dark:text-gray-400"><b>Масто:</b> {meetup?.venue}</p>
+                                    <p className=" text-gray-500 dark:text-gray-400"><b>Начало:</b> {meetup?.start}</p>
+                                    <p className=" text-gray-500 dark:text-gray-400"><b>Край:</b> {meetup?.end}</p>
                                 </div>
                             </div>
                             {isOwner && (
                             <div>
-                                <Link to={`/venues/${venue?.id}/edit`} className="flex flex-col px-10 py-1 mx-auto ">
+                                <Link to={`/meetups/${meetup?.id}/edit`} className="flex flex-col px-10 py-1 mx-auto ">
                                     <button type="button"
                                             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                                     >Редактирай
                                     </button>
                                 </Link>
-                                <Link to={`/venues`} className="flex flex-col px-10 py-1 mx-auto ">
+                                <Link to={`/schedule`} className="flex flex-col px-10 py-1 mx-auto ">
                                     <button type="button"
                                             className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                                             onClick={deleteBtnHandler}>Изтрий

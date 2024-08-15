@@ -12,7 +12,7 @@ import Register from "./components/auth/Register.jsx";
 
 import {AuthContextProvider} from "./contexts/AuthContext.jsx";
 import Profile from "./components/profile/Profile.jsx";
-import Schedule from "./components/schedule/Schedule.jsx";
+import Schedule from "./components/meetups/Schedule.jsx";
 import Artists from "./components/artists/Artists.jsx";
 import Artist from "./components/artists/Artist.jsx";
 import Venue from "./components/venues/Venue.jsx";
@@ -21,6 +21,11 @@ import Venues from "./components/venues/Venues.jsx";
 import CreateVenue from "./components/venues/CreateVenue.jsx";
 import EditArtist from "./components/artists/EditArtist.jsx";
 import EditVenue from "./components/venues/EditVenue.jsx";
+import CreateMeetup from "./components/meetups/CreateMeetup.jsx";
+import EditMeetup from "./components/meetups/EditMeetup.jsx";
+import Meetup from "./components/meetups/Meetup.jsx";
+import CreateGig from "./components/gigs/CreateGig.jsx";
+import EditGig from "./components/gigs/EditGig.jsx";
 
 function App() {
     return (
@@ -38,9 +43,14 @@ function App() {
                             <Route path='/profile' element={<Profile/>}/>
 
                             <Route path='/schedule' element={<Schedule/>}/>
+                            <Route path='/meetups/:id' element={<Meetup/>}/>
+                            <Route path='/meetups/create' element={<CreateMeetup/>}/>
+                            <Route path='/meetups/:id/edit' element={<EditMeetup/>}/>
 
                             <Route path='/gigs' element={<Gigs/>}/>
                             <Route path='/gigs/:id' element={<Gig/>}/>
+                            <Route path='/meetups/create' element={<CreateGig/>}/>
+                            <Route path='/meetups/:id/edit' element={<EditGig/>}/>
 
                             <Route path='/venues' element={<Venues/>}/>
                             <Route path='/venues/:id' element={<Venue/>}/>

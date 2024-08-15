@@ -5,13 +5,11 @@ import {Spinner} from "flowbite-react";
 
 export default function Artist() {
     const {id} = useParams();
-    const {artist, isLoading} = useGetOneArtist(id);
+    const {artist, isLoading, isOwner} = useGetOneArtist(id);
     const del = useDeleteArtist();
-
     const deleteBtnHandler = () => {
         del(id);
     }
-    console.log(artist)
     return (
         <section className="bg-gray-50 dark:bg-gray-900">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -39,6 +37,7 @@ export default function Artist() {
                                 </div>
                             </div>
 
+                            {isOwner && (
                             <div >
                                 <Link to={`/artists/${artist?.id}/edit`} className="flex flex-col px-10 py-1 mx-auto ">
                                     <button type="button"
@@ -52,7 +51,7 @@ export default function Artist() {
                                             onClick={deleteBtnHandler}>Изтрий
                                     </button>
                                 </Link>
-                            </div>
+                            </div>)}
                         </div>)}
                 </div>
             </div>
