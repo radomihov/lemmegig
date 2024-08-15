@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react";
-import gigsAPI, {create} from "../api/gigs-api.js";
+import gigsAPI, {create, edit, del} from "../api/gigs-api.js";
+import {useAuthContext} from "../contexts/AuthContext.jsx";
 
 export function useGetAllGigs() {
     const [gigs, setGigs] = useState();
@@ -17,13 +18,22 @@ export function useGetAllGigs() {
 }
 export function useGetOneGig(gigId) {
     const [gig, setGig] = useState();
+    const [isLoading, setIsLoading] = useState(true);
+    const {user} = useAuthContext();
+    const [isOwner, setIsOwner] = useState(false);
 
     useEffect(() => {
         gigsAPI.getOne(gigId)
-            .then((result => setGig(result)));
+            .then((result => {
+                setGig(result.data)
+                if (user?.id === result.data.created_by) {
+                    setIsOwner(true);
+                }
+                setIsLoading(false)
+            }));
     }, [gigId]);
 
-    return [gig, setGig];
+    return {gig, setGig, isLoading, isOwner};
 }
 
 export function useGetAllPublicGigs() {
@@ -42,16 +52,20 @@ export function useGetAllPublicGigs() {
 }
 export function useGetOnePublicGig(gigId) {
     const [gig, setGig] = useState();
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         gigsAPI.getOnePublic(gigId)
-            .then((result => setGig(result)));
+            .then((result => {
+                setGig(result.data)
+                setIsLoading(false)
+            }));
     }, [gigId]);
 
-    return [gig, setGig];
+    return {gig, setGig, isLoading};
 }
 
-export function useCreateGigs() {
+export function useCreateGig() {
     const createGigHandler = async (name, description, fee, is_public, image) => {
         const {newGig} = await create(name, description, fee, is_public, image);
 
@@ -59,4 +73,24 @@ export function useCreateGigs() {
     }
 
     return createGigHandler;
+}
+export function useDeleteGig() {
+    const deleteGigHandler = async (artistId) => {
+
+        const {res} = await del(artistId);
+
+        return res;
+    }
+
+    return deleteGigHandler;
+}
+
+export function useEditGig() {
+    const editGigHandler = async (id, name, description, fee, is_public, image) => {
+        const {editedGig} = await edit(id, name, description, fee, is_public, image);
+
+        return editedGig;
+    }
+
+    return editGigHandler;
 }

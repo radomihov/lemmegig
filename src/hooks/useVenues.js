@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react";
 import venuesAPI, {create, del, edit} from "../api/venues-api.js";
+import {useAuthContext} from "../contexts/AuthContext.jsx";
 
 export function useGetAllVenues() {
     const [venues, setVenues] = useState();
@@ -18,16 +19,21 @@ export function useGetAllVenues() {
 export function useGetOneVenue(venueId) {
     const [venue, setVenue] = useState();
     const [isLoading, setIsLoading] = useState(true);
+    const {user} = useAuthContext();
+    const [isOwner, setIsOwner] = useState(false);
 
     useEffect(() => {
         venuesAPI.getOne(venueId)
             .then((result => {
                 setVenue(result.data)
+                if (user?.id === result.data.created_by) {
+                    setIsOwner(true);
+                }
                 setIsLoading(false)
             }));
     }, [venueId]);
 
-    return {venue, setVenue, isLoading};
+    return {venue, setVenue, isLoading, isOwner};
 }
 
 export function useCreateVenues() {

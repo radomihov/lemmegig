@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react";
 import artistsAPI, {create, del, edit} from "../api/artists-api.js";
+import {useAuthContext} from "../contexts/AuthContext.jsx";
 
 export function useGetAllArtists() {
     const [artists, setArtists] = useState();
@@ -18,16 +19,21 @@ export function useGetAllArtists() {
 export function useGetOneArtist(artistId) {
     const [artist, setArtist] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const {user} = useAuthContext();
+    const [isOwner, setIsOwner] = useState(false);
 
     useEffect(() => {
         artistsAPI.getOne(artistId)
             .then((result => {
                 setArtist(result.data)
+                if (user?.id === result.data.created_by) {
+                    setIsOwner(true);
+                }
                 setIsLoading(false)
             }));
     }, [artistId]);
 
-    return {artist, setArtist, isLoading};
+    return {artist, setArtist, isLoading, isOwner};
 }
 
 export function useCreateArtist() {
