@@ -1,24 +1,25 @@
-import {useState} from "react";
+import { useState } from "react";
+
 export function useForm(initialValues, submitCallback) {
-    const [values, setValues] = useState(initialValues)
+    const [values, setValues] = useState(initialValues);
 
-    //TODO: add support for checkbox
     const changeHandler = (e) => {
-        const { name, value } = e.target;
-        setValues(state => ({
-            ...state,
-            [name]: value,
-        }))
-    }
+        const { name, type, value, checked } = e.target;
 
-    const submitHandler = (e)=> {
+        setValues((state) => ({
+            ...state,
+            [name]: type === "checkbox" ? checked : value,
+        }));
+    };
+
+    const submitHandler = (e) => {
         e.preventDefault();
         submitCallback(values);
-    }
+    };
 
     return {
         values,
         changeHandler,
-        submitHandler
-    }
+        submitHandler,
+    };
 }
