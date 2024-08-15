@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import venuesAPI, {create} from "../api/venues-api.js";
+import venuesAPI, {create, del, edit} from "../api/venues-api.js";
 
 export function useGetAllVenues() {
     const [venues, setVenues] = useState();
@@ -17,13 +17,17 @@ export function useGetAllVenues() {
 
 export function useGetOneVenue(venueId) {
     const [venue, setVenue] = useState();
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         venuesAPI.getOne(venueId)
-            .then((result => setVenue(result)));
+            .then((result => {
+                setVenue(result.data)
+                setIsLoading(false)
+            }));
     }, [venueId]);
 
-    return [venue, setVenue];
+    return {venue, setVenue, isLoading};
 }
 
 export function useCreateVenues() {
@@ -34,4 +38,25 @@ export function useCreateVenues() {
     }
 
     return createVenueHandler;
+}
+
+export function useDeleteVenue() {
+    const deleteVenueHandler = async (venueId) => {
+
+        const {res} = await del(venueId);
+
+        return res;
+    }
+
+    return deleteVenueHandler;
+}
+
+export function useEditVenue() {
+    const editVenueHandler = async (id, name, image, genres, place, bio) => {
+        const {editedVenue} = await edit(id, name, image, genres, place, bio);
+
+        return editedVenue;
+    }
+
+    return editVenueHandler;
 }
