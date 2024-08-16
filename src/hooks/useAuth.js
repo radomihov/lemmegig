@@ -24,15 +24,16 @@ export function useRegister() {
     }
 
     return registerHandler;
-}
+}Ï
 
 export function useLogout() {
     const {accessToken, changeAuthState} = useAuthContext();
 
     const logoutHandler = async () => {
-        await logout(accessToken);
         localStorage.clear();
         changeAuthState({});
+        await logout(accessToken);
+        //TODO: If error on logout on backend - handle token cleanup there
     }
 
     return logoutHandler;

@@ -7,9 +7,10 @@ export default function Logout() {
 
     const logoutHandler = async (e) => {
         e.preventDefault();
+
         try {
-            await logout();
             navigate('/');
+            await logout();
         } catch (err) {
             console.log(err.message);
         }
