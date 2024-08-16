@@ -8,6 +8,7 @@ export const del = (gigId) => request.del(`${BASE_URL}/gigs/${gigId}`);
 export const edit = (gigId, name, description, fee, is_public, image) => request.put(`${BASE_URL}/gigs/${gigId}`, {name, description, fee, is_public, image});
 export const getAllPublic = () => request.get(`${BASE_URL}/affiche`);
 export const getOnePublic = (gigId) => request.get(`${BASE_URL}/affiche/${gigId}`);
+export const getOneWithUserData = (gigId) => request.get(`${BASE_URL}/gigs/${gigId}/user`);
 
 const gigsAPI = {
     getAll,
@@ -16,7 +17,8 @@ const gigsAPI = {
     del,
     edit,
     getAllPublic,
-    getOnePublic
+    getOnePublic,
+    getOneWithUserData
 };
 
 export default gigsAPI;
