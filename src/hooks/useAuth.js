@@ -24,7 +24,7 @@ export function useRegister() {
     }
 
     return registerHandler;
-}Ï
+}
 
 export function useLogout() {
     const {accessToken, changeAuthState} = useAuthContext();
